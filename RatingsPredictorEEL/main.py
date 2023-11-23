@@ -1,9 +1,7 @@
 import eel
+import logic.todo_controller
 
 eel.init('web')
 
-@eel.expose
-def get_data():
-    return 'Get data from python'
 
 eel.start('index.html')
