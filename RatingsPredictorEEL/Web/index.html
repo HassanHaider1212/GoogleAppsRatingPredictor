@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eel App</title>
+    <title>Apps Rating Predictor</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+
 </head>
 <body>
-    <h1 id="myele">TODO APP</h1>
+    
+    <!-- <h1 id="myele">Apps Rating Predictor</h1>
 
     <input type="text" id="taskinput">
     <button id="addbtn">Add data</button>
@@ -14,11 +21,120 @@
     
     <div id="tasks">
         <p>No tasks yet</p>
-    </div>
+    </div> -->
 
+    <!-- <div class="container">
+        <img src="/Images/Social.jpg" class="img-responsive center-block" width="500" height="236">
+    </div> -->
+
+    <div class="background">
+
+        <form class="container formbackground"> 
+            <div class="form-group">
+                <label for="appname">App Name</label>
+                <input type="text" class="form-control" placeholder="Name" id="appname">
+            </div>
+            
+            <div class="form-group">
+                <label for="ratingcount">Rating Count</label>
+                <input type="number" class="form-control" placeholder="Rating Count" id="ratingcount">
+            </div>
+
+            <div class="form-group">
+                <label for="installs">No of Installs</label>
+                <input type="number" class="form-control" placeholder="No of Installs" id="installs">
+            </div>
+
+            <div class="form-group">
+                <label  for="price">Amount</label>
+                <div class="input-group">
+                    <div class="input-group-addon">$</div>
+                    <input type="number" class="form-control" placeholder="Price" id="price">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="size">App Size</label>
+                <input type="number" class="form-control" placeholder="Size" id="size">
+            </div>
+            
+            <div class="form-group">
+                <label for="version">Android Version</label>
+                <input type="number" class="form-control" placeholder="Android Version" id="version">
+            </div>
+            
+            <div class="form-group">
+                <label for="last_update">Days Since Last Updated</label>
+                <input type="number" class="form-control" placeholder="Days Since Last Updated" id="last_update">
+            </div>
+
+            <br>
+            <div class="dropdown">
+                <label for="contentRating">Select Content Rating:</label>
+                <select class="btn btn-default dropdown-toggle" id="contentRating" name="content_rating">
+                    <option value="default">select</option>
+                    <option value="adult">Adult only 18+</option>
+                    <option value="everyone">Everyone</option>
+                    <option value="everyone10">Everyone 10+</option>
+                    <option value="Mature17">Mature 17+</option>
+                    <option value="Teen">Teen</option>
+                </select>
+            </div>
+            <br>
+
+            <div class="dropdown">
+                <label for="category">Select Category:</label>
+                <select class="btn btn-default dropdown-toggle" id="category" name="_category">
+                    <option value="default">select</option>
+                    <option value="Books">Books & Reference</option>
+                    <option value="Business">Business</option>
+                    <option value="Education">Education</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Lifestyle">Lifestyle</option>
+                    <option value="Music">Music & Audio</option>
+                    <option value="Personalization">Personalization</option>
+                    <option value="Productivity">Productivity</option>
+                    <option value="Tools">Tools</option>
+                </select>
+            </div>
+
+            <br>
+
+            <div class="checkbox">
+                <label for="ad_supported">                
+                    <input type="checkbox" id="ad_supported" value="0">
+                    Ad Supported
+                </label>
+            </div>
+
+            <br>
+            <button id="submitform" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    
+        
+    
+    <div id="tasks">
+        <p>No tasks yet</p>
+    </div> 
 </body>
 
 <script type="text/javascript" src="/eel.js"></script>
 <script src="index.js"></script>
+
+<!-- <script>
+    function updateCheckboxValue() {
+        // Get the checkbox element
+        var checkbox = document.getElementById("ad_supported");
+
+        // Update the value based on the checked status
+        if (checkbox.checked) {
+            checkbox.value = 1;
+        } else {
+            checkbox.value = 0;
+        }
+    }
+</script> -->
 
 </html>

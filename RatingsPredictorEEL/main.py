@@ -1,7 +1,7 @@
 import eel
 import logic.todo_controller
 
-eel.init('web')
+eel.init('Web')
 
 
 eel.start('index.html')
