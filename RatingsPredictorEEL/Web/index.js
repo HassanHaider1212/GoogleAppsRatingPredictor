@@ -44,6 +44,11 @@ document.getElementById('submitform').addEventListener('click', async(event) => 
         $("#appnamediv").show();
         // $("#ratingcountdiv").show();
 
+        // Scroll up to the error div
+        $('html, body').animate({
+            scrollTop: $("#appnamediv").offset().top
+        }, 1000); // 1000 milliseconds = 1 second
+
         // Hide the divs after 10 seconds
         setTimeout(function() {
             $("#appnamediv").hide();
@@ -78,5 +83,5 @@ document.getElementById('submitform').addEventListener('click', async(event) => 
         $("#submissionform").trigger('reset');
         getTasks()
     }
-    
+
 })
