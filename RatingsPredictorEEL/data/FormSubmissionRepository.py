@@ -1,7 +1,11 @@
 import pyodbc
 
+# Replace these values with your SQL Server details
+server = 'HP\SQLEXPRESS02'
+database = 'GoogleApps'
+
 class FormSubmission:
-    def __init__(self, server, database):
+    def __init__(self):
         # Establish a connection to the SQL Server database using Windows Authentication
         self.conn = pyodbc.connect(f'DRIVER=ODBC Driver 17 for SQL Server;SERVER={server};DATABASE={database};Trusted_Connection=yes;')
         self.cursor = self.conn.cursor()

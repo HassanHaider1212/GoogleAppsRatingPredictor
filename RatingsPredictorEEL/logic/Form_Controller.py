@@ -2,12 +2,7 @@ import eel
 import atexit
 from data.FormSubmissionRepository import FormSubmission
 
-
-# Replace these values with your SQL Server details
-server = 'HP\SQLEXPRESS02'
-database = 'GoogleApps'
-
-form_repo = FormSubmission(server, database)
+form_repo = FormSubmission()
 
 @eel.expose
 def submitForm(formdata):
