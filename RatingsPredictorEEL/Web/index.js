@@ -1,31 +1,38 @@
-async function getTasks(){
-    const tasks = await eel.get_tasks()()
-    const divTasks = document.getElementById('tasks')
-    divTasks.innerHTML = ''
+async function getTasks() {
+    const tasks = await eel.get_tasks()();
+    const divTasks = document.getElementById('tasks');
+    divTasks.innerHTML = '';
 
-    let taskDisplay = '' 
+    let taskDisplay = '';
 
-    for (let task of tasks) {
-        taskDisplay += `<p>App Name: ${task.appname}<br> Rating Count: ${task.ratingcount}<br>
-                        Installs: ${task.installs}<br> Price: ${task.price}<br> Size: ${task.size}<br> Version: ${task.version}<br>
-                        Days Since Last Updated: ${task.last_update}<br> Content Rating: ${task.contentRating}<br> Category: ${task.category}<br> 
-                        Ad Supported: ${task.ad_supported}</p><br>`;
+    if (tasks && tasks.length > 0) {
+        for (let task of tasks) {
+            const [appId, appName, ratingCount, installs, price, size, version, lastUpdate, contentRating, category, adSupported] = task;
+
+            
+            taskDisplay += `
+            <p>App ID: ${appId}</p>
+            <p>App Name: ${appName || 'N/A'}</p>
+            <p>Rating Count: ${ratingCount}</p>
+            <p>Installs: ${installs}</p>
+            <p>Price: ${price}</p>
+            <p>Size: ${size}</p>
+            <p>Version: ${version}</p>
+            <p>Days Since Last Updated: ${lastUpdate}</p>
+            <p>Content Rating: ${contentRating}</p>
+            <p>Category: ${category}</p>
+            <p>Ad Supported: ${adSupported}</p><br>`;
+        }
+    } 
+    else {
+        taskDisplay = '<p>No tasks yet</p>';
     }
 
-    divTasks.innerHTML = taskDisplay
+    divTasks.innerHTML = taskDisplay;
 }
+getTasks()
 
-// document.getElementById('addbtn').addEventListener('click', async() => {
-//     await eel.add(document.getElementById('taskinput').value)
-//     getTasks()  
-// })
-
-// document.getElementById('removebtn').addEventListener('click', async() => {
-//     await eel.delete(document.getElementById('taskinput').value)
-//     getTasks()
-// })
-
-document.getElementById('submitform').addEventListener('click', async() => {
+document.getElementById('submitform').addEventListener('click', async(event) => {
 
     event.preventDefault();
 
