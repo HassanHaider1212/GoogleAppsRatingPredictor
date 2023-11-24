@@ -1,3 +1,4 @@
+
 async function getTasks() {
     const tasks = await eel.get_tasks()();
     const divTasks = document.getElementById('tasks');
@@ -24,13 +25,13 @@ async function getTasks() {
             <p>Ad Supported: ${adSupported}</p><br>`;
         }
     } 
-    else {
-        taskDisplay = '<p>No tasks yet</p>';
-    }
+    // else {
+    //     taskDisplay = '<p>No tasks yet</p>';
+    // }
 
     divTasks.innerHTML = taskDisplay;
 }
-getTasks()
+// getTasks()
 
 document.getElementById('submitform').addEventListener('click', async(event) => {
 
@@ -78,10 +79,69 @@ document.getElementById('submitform').addEventListener('click', async(event) => 
             category: document.getElementById('category').value,
             ad_supported: checkbox.value,
         };
+        
+        const divTasks = document.getElementById('tasks');
 
-        await eel.submitForm(formData)()  
+        // divTasks.innerHTML = "In Porgress!";
+
+        str = await eel.submitForm(formData)() //storing data in database. Uncomment it when use.
+        if(str == "Error: Integrity Error"){
+            $("#formDbdiv").show();
+            // Hide the divs after 10 seconds
+            setTimeout(function() {
+                $("#formDbdiv").hide();
+                // $("#ratingcountdiv").hide();
+            }, 10000); // 10000 milliseconds = 10 seconds
+        }
+
+        if(str != "Error: Integrity Error")
+        {
+            // Predict rating
+            const taskDisplay = await eel.predictRating(formData)();
+            debugger;console.log("Task Display:", taskDisplay);
+
+            // const parsedResult = parseFloat(taskDisplay);
+            // console.log("Task Display parseFloat:", taskDisplay);
+            parsedResult = parseInt(taskDisplay)
+            if (!isNaN(taskDisplay)) {
+                // Update the UI with the parsed result
+                divTasks.innerHTML = `<canvas id="ratingChart" width="400" height="400"></canvas>`;
+
+                // Create a pie chart using Chart.js
+                const ctx = document.getElementById('ratingChart').getContext('2d');
+                const ratingChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Rating', 'Remaining'],
+                        datasets: [{
+                            data: [parsedResult, 5 - parsedResult], // Assuming a rating scale of 0 to 5
+                            backgroundColor: ['#2ecc71', '#9b59b6'], // Colors for the chart segments
+                        }],
+                        borderColor: "transparent"
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        legend: {
+                            display: false,
+                        },
+                    },
+                });
+
+
+            } 
+            else {
+                // Handle the case where the result is not a valid number
+                // divTasks.innerHTML = "Error: Invalid result";
+                $("#resultdiv").show();
+                setTimeout(function() {
+                    $("#resultdiv").hide();
+                    // $("#ratingcountdiv").hide();
+                }, 10000); // 10000 milliseconds = 10 seconds
+            }
+        }
         $("#submissionform").trigger('reset');
-        getTasks()
+        // getTasks()
     }
 
 })

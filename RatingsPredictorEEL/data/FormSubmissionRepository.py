@@ -1,4 +1,6 @@
 import pyodbc
+import pickle
+import numpy as np
 
 # Replace these values with your SQL Server details
 server = 'HP\SQLEXPRESS02'
@@ -24,6 +26,18 @@ class FormSubmission:
         # Retrieve data from the SQL Server database
         self.cursor.execute('SELECT * FROM app_data')
         return self.cursor.fetchall()
+    
+    def predictRating(self,formdata):
+        # Load the model using pickle
+        with open('data\\random_forest_model.pkl', 'rb') as file:
+            loaded_model = pickle.load(file)
+        
+        formdata_dict = formdata[0]
+        input_array = np.array(list(formdata_dict.values())).reshape(1, -1)
+        
+        rating_predict = loaded_model.predict(input_array)
+        return rating_predict
+        
 
     def close_connection(self):
         # Close the database connection
