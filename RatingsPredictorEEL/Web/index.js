@@ -35,8 +35,24 @@ getTasks()
 document.getElementById('submitform').addEventListener('click', async(event) => {
 
     event.preventDefault();
+    var appName = document.getElementById('appname').value;
 
-    var checkbox = document.getElementById("ad_supported");
+    // Check if the App Name is not empty
+    if (appName.trim() === '') {
+        // Display an alert or error message (you can customize this)
+        // alert('Please enter the App Name.');
+        $("#appnamediv").show();
+        // $("#ratingcountdiv").show();
+
+        // Hide the divs after 10 seconds
+        setTimeout(function() {
+            $("#appnamediv").hide();
+            // $("#ratingcountdiv").hide();
+        }, 10000); // 10000 milliseconds = 10 seconds
+    } 
+    else 
+    {
+        var checkbox = document.getElementById("ad_supported");
 
         // Update the value based on the checked status
         if (checkbox.checked) {
@@ -45,19 +61,22 @@ document.getElementById('submitform').addEventListener('click', async(event) => 
             checkbox.value = 0;
         }
 
-    const formData = {
-        appname: document.getElementById('appname').value,
-        ratingcount: document.getElementById('ratingcount').value,
-        installs: document.getElementById('installs').value,
-        price: document.getElementById('price').value,
-        size: document.getElementById('size').value,
-        version: document.getElementById('version').value,
-        last_update: document.getElementById('last_update').value,
-        contentRating: document.getElementById('contentRating').value,
-        category: document.getElementById('category').value,
-        ad_supported: checkbox.value,
-    };
+        const formData = {
+            appname: document.getElementById('appname').value,
+            ratingcount: document.getElementById('ratingcount').value,
+            installs: document.getElementById('installs').value,
+            price: document.getElementById('price').value,
+            size: document.getElementById('size').value,
+            version: document.getElementById('version').value,
+            last_update: document.getElementById('last_update').value,
+            contentRating: document.getElementById('contentRating').value,
+            category: document.getElementById('category').value,
+            ad_supported: checkbox.value,
+        };
 
-    await eel.submitForm(formData)()
-    getTasks()
+        await eel.submitForm(formData)()  
+        $("#submissionform").trigger('reset');
+        getTasks()
+    }
+    
 })

@@ -19,12 +19,19 @@
 
     <div class="background">
 
-        <form class="container formbackground"> 
-            <div class="form-group">
-                <label for="appname">App Name</label>
-                <input type="text" class="form-control" placeholder="Name" id="appname">
+        <form class="container formbackground" id="submissionform"> 
+
+            <div class="form-group alert alert-danger" id="appnamediv" hidden>
+                Please enter the App Name!
             </div>
-            
+            <div class="form-group" id="appnamediv">
+                <label for="appname">App Name <span class="required" style="color: red;">*</span></label>
+                <input type="text" class="form-control" placeholder="Name" id="appname" required>
+            </div>
+
+            <!-- <div class="form-group alert alert-danger" id="ratingcountdiv" hidden>
+                Please enter the Rating Count!
+            </div> -->
             <div class="form-group">
                 <label for="ratingcount">Rating Count</label>
                 <input type="number" class="form-control" placeholder="Rating Count" id="ratingcount">
