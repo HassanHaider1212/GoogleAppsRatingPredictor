@@ -23,28 +23,7 @@ class FormSubmission:
     def get_formdata(self):
         # Retrieve data from the SQL Server database
         self.cursor.execute('SELECT * FROM app_data')
-        
-        rows = self.cursor.fetchall()
-
-        # Convert rows to a list of tuples with appropriate data types
-        todos = [
-            (
-                str(row[0]),          
-                str(row[1]),          
-                int(row[2]),          
-                int(row[3]),          
-                float(row[4]),        
-                int(row[5]),          
-                int(row[6]),          
-                int(row[7]),          
-                str(row[8]),          
-                str(row[9]),          
-                bool(row[10])         
-            )
-            for row in rows
-        ]
-        
-        return todos
+        return self.cursor.fetchall()
 
     def close_connection(self):
         # Close the database connection
