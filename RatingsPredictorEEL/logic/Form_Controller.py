@@ -38,12 +38,12 @@ def predictRating(formdata):
         'Category_Personalization': 1 if formdata['category'] == "Personalization" else 0,
         'Category_Productivity': 1 if formdata['category'] == "Productivity" else 0,
         'Category_Tools': 1 if formdata['category'] == "Tools" else 0,
-
+        'Category_Other': 1 if formdata['category'] == "Others" else 0,
         'Ad Supported': int(formdata['ad_supported']),
 
         #add these accoringly if needed, not used in form but used in model
-        'In App Purchases': 0,
-        'Editors Choice': 0,
+        'In App Purchases': int(formdata['InAppPurchases']),
+        'Editors Choice': int(formdata['EditorsChoice']),
     }
     try:
         result = form_repo.predictRating([tasks])

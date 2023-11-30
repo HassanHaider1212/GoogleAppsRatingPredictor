@@ -29,12 +29,11 @@ class FormSubmission:
     
     def predictRating(self,formdata):
         # Load the model using pickle
-        with open('data\\random_forest_model.pkl', 'rb') as file:
+        with open('data\\project_model.pkl', 'rb') as file:
             loaded_model = pickle.load(file)
         
         formdata_dict = formdata[0]
         input_array = np.array(list(formdata_dict.values())).reshape(1, -1)
-        
         rating_predict = loaded_model.predict(input_array)
         return rating_predict
         

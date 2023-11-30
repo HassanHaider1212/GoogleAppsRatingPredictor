@@ -59,12 +59,27 @@ document.getElementById('submitform').addEventListener('click', async(event) => 
     else 
     {
         var checkbox = document.getElementById("ad_supported");
-
         // Update the value based on the checked status
         if (checkbox.checked) {
             checkbox.value = 1;
         } else {
             checkbox.value = 0;
+        }
+
+        var checkbox1 = document.getElementById("InAppPurchases");
+        // Update the value based on the checked status
+        if (checkbox1.checked) {
+            checkbox1.value = 1;
+        } else {
+            checkbox1.value = 0;
+        }
+
+        var checkbox2 = document.getElementById("EditorsChoice");
+        // Update the value based on the checked status
+        if (checkbox2.checked) {
+            checkbox2.value = 1;
+        } else {
+            checkbox2.value = 0;
         }
 
         const formData = {
@@ -78,6 +93,8 @@ document.getElementById('submitform').addEventListener('click', async(event) => 
             contentRating: document.getElementById('contentRating').value,
             category: document.getElementById('category').value,
             ad_supported: checkbox.value,
+            InAppPurchases: checkbox1.value,
+            EditorsChoice: checkbox2.value,
         };
         
         const divTasks = document.getElementById('tasks');
@@ -102,6 +119,31 @@ document.getElementById('submitform').addEventListener('click', async(event) => 
 
             // const parsedResult = parseFloat(taskDisplay);
             // console.log("Task Display parseFloat:", taskDisplay);
+            var str;
+            const result_range = document.getElementById('result_range');
+            const result_range_text = document.getElementById('result_range_text');
+            if(taskDisplay==0){ 
+                str = "0 - 2"
+                result_range_text.value  = str;
+                result_range_text.removeAttribute('disabled');
+                result_range.style.display = "block";
+            }
+            else if(taskDisplay==1){
+                str = "2 - 3"  
+                result_range_text.value  = str;
+                result_range.style.display = "block";
+            }
+            else if(taskDisplay==2){
+                str = "3 - 4"  
+                result_range_text.value  = str;
+                result_range.style.display = "block";
+            }
+            else if(taskDisplay==3){
+                str = "4 - 5"
+                result_range_text.value  = str;
+                result_range.style.display = "block";
+            }
+
             parsedResult = parseInt(taskDisplay)
             if (!isNaN(taskDisplay)) {
                 // Update the UI with the parsed result
@@ -123,7 +165,10 @@ document.getElementById('submitform').addEventListener('click', async(event) => 
                         responsive: true,
                         maintainAspectRatio: false,
                         legend: {
-                            display: false,
+                            display: true,
+                            legend: {
+                                display: false,
+                            },
                         },
                     },
                 });

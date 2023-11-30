@@ -95,6 +95,7 @@
                     <option value="Personalization">Personalization</option>
                     <option value="Productivity">Productivity</option>
                     <option value="Tools">Tools</option>
+                    <option value="Others">Others</option>
                 </select>
             </div>
 
@@ -104,6 +105,20 @@
                 <label for="ad_supported">                
                     <input type="checkbox" id="ad_supported" value="0">
                     Ad Supported
+                </label>
+            </div>
+
+            <div class="checkbox">
+                <label for="InAppPurchases">                
+                    <input type="checkbox" id="InAppPurchases" value="0">
+                    In App Purchases
+                </label>
+            </div>
+
+            <div class="checkbox">
+                <label for="EditorsChoice">                
+                    <input type="checkbox" id="EditorsChoice" value="0">
+                    Editors Choice
                 </label>
             </div>
 
@@ -118,6 +133,10 @@
     </div>
     <div class="form-group alert alert-danger" id="resultdiv" hidden>
         Error: Invalid result!
+    </div>
+    <div id="result_range" hidden>
+        <label for="result_range_text">Range</label>
+        <input type="text" class="form-control" id="result_range_text" disabled>
     </div>
     <div id="tasks">
         
