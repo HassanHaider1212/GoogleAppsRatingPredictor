@@ -36,38 +36,41 @@
             </div> -->
             <div class="form-group">
                 <label for="ratingcount">Rating Count</label>
-                <input type="number" class="form-control" placeholder="Rating Count" id="ratingcount">
+                <input type="number" class="form-control" placeholder="No of peoples rated" id="ratingcount" min="0">
             </div>
 
             <div class="form-group">
                 <label for="installs">No of Installs</label>
-                <input type="number" class="form-control" placeholder="No of Installs" id="installs">
+                <input type="number" class="form-control" placeholder="No of Installs" id="installs" min="0">
             </div>
 
             <div class="form-group">
                 <label  for="price">Amount</label>
                 <div class="input-group">
                     <div class="input-group-addon">$</div>
-                    <input type="number" class="form-control" placeholder="Price" id="price">
+                    <input type="number" class="form-control" placeholder="Price" id="price" min="0">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="size">App Size</label>
-                <input type="number" class="form-control" placeholder="Size" id="size">
+                <div class="input-group">
+                    <div class="input-group-addon">MB</div>
+                    <input type="number" class="form-control" placeholder="Size" id="size" min="1">
+                </div>
             </div>
             
             <div class="form-group">
                 <label for="version">Android Version</label>
-                <input type="number" class="form-control" placeholder="Android Version" id="version">
+                <input type="number" class="form-control" placeholder="Android Version (1-15)" id="version" min="1" max="15">
             </div>
             
             <div class="form-group">
                 <label for="last_update">Days Since Last Updated</label>
-                <input type="number" class="form-control" placeholder="Days Since Last Updated" id="last_update">
+                <input type="number" class="form-control" placeholder="Days Since Last Updated" id="last_update" min="0">
             </div>
 
-            <br>
+            <br>    
             <div class="dropdown">
                 <label for="contentRating">Select Content Rating:</label>
                 <select class="btn btn-default dropdown-toggle" id="contentRating" name="content_rating">
@@ -134,9 +137,9 @@
     <div class="form-group alert alert-danger" id="resultdiv" hidden>
         Error: Invalid result!
     </div>
-    <div id="result_range" hidden>
-        <label for="result_range_text">Range</label>
-        <input type="text" class="form-control" id="result_range_text" disabled>
+    <div id="result_range" hidden style="padding-left: 10px;">
+        <label for="result_range_text">Ratings Range (1-5)</label>
+        <input type="text" class="form-control" id="result_range_text" disabled style="width: 55px;">
     </div>
     <div id="tasks">
         
