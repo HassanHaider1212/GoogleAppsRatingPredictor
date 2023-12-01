@@ -29,7 +29,7 @@ class FormSubmission:
     
     def predictRating(self,formdata):
         # Load the model using pickle
-        with open('data\\project_model.pkl', 'rb') as file:
+        with open('data\\RatingsPredictorModel\\project_model.pkl', 'rb') as file:
             loaded_model = pickle.load(file)
         
         formdata_dict = formdata[0]
